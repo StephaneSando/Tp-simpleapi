@@ -1,0 +1,40 @@
+2026.04.03 10:45:34 INFO  Started: Metals version 1.6.6 in folders 'C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi' for client Visual Studio Code 1.104.2.
+2026.04.03 10:45:34 INFO  Memory monitor started
+2026.04.03 10:45:35 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.04.03 10:45:35 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:35 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+avr. 03, 2026 10:45:37 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2
+2026.04.03 10:45:37 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:37 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:37 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+avr. 03, 2026 10:45:37 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10
+2026.04.03 10:45:37 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:39 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:42 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:42 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:52 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:53 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:53 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:53 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:53 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:45:55 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:46:12 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:46:12 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:46:13 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:46:13 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 10:53:15 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:48 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:48 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:48 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:53 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:54 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:54 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:56 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:04:56 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 11:43:18 INFO  no build target found for C:\Users\STE\Documents\Cours Efrei\DevOps_MlOps\TP1-2\simpleapi\src\main\java\fr\takima\training\simpleapi\controller\GreetingController.java. Using fallback presentation compiler.
+2026.04.03 15:02:44 INFO  Shutting down server
+2026.04.03 15:02:44 INFO  Memory monitor stopped
+2026.04.03 15:02:44 INFO  shutting down Metals
+2026.04.03 15:02:44 INFO  Exiting server
