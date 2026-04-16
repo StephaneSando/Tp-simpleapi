@@ -1,62 +1,80 @@
 name: CI devops 2025
+
 on:
-  #to begin you want to launch this job in main and develop
   push:
-    branches: 
+    branches:
       - main
       - test
   pull_request:
 
 jobs:
-  test-backend: 
+
+  # Job 1 : Tests et analyse
+  test-backend:
     runs-on: ubuntu-24.04
     steps:
-     #checkout your github code using actions/checkout@v4
       - uses: actions/checkout@v4
 
-     #do the same with another action (actions/setup-java@v4) that enable to setup jdk 21
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
-     #finally build your app with the latest command
       - name: Build and Test with Maven
-        run: mvn -B verify sonar:sonar
-          -Dsonar.projectKey=stedaniel_simple-api
-          -Dsonar.organization=stedaniel
-          -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify sonar:sonar 
+          -Dsonar.projectKey=stedaniel_simple-api 
+          -Dsonar.organization=stedaniel 
+          -Dsonar.host.url=https://sonarcloud.io 
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }} 
           --file ./pom.xml
 
-  # define job to build and publish docker image
-  build-and-push-docker-image:
+  # Job 2 : Build et push backend (après tests)
+  build-and-push-backend:
     needs: test-backend
-    # run only when code is compiling and tests are passing
     runs-on: ubuntu-24.04
-    # steps to perform in job
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Login to DockerHub
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin  
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
       - name: Build image and push backend
         uses: docker/build-push-action@v6
         with:
-       # relative path to the place where source code with Dockerfile is located
           context: .
-          tags:  ${{secrets.DOCKERHUB_USERNAME}}/mybackend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mybackend:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+
+  # Job 3 : Build et push database (après tests)
+  build-and-push-database:
+    needs: test-backend
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
       - name: Build image and push database
         uses: docker/build-push-action@v6
         with:
-            context: ./database
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/mydatabase:latest
-            push: ${{ github.ref == 'refs/heads/main' }}
+          context: ./database
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mydatabase:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+  # Job 4 : Build et push httpd (après backend)
+  build-and-push-httpd:
+    needs: build-and-push-backend
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v6
@@ -64,4 +82,4 @@ jobs:
           context: ./httpd
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myhttpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
-  
+      
