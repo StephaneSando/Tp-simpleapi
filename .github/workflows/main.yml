@@ -22,7 +22,7 @@ jobs:
           distribution: 'temurin'
 
      #finally build your app with the latest command
-      - name: Build and Test with Maven
+      - name: Build and test with Maven
         run: mvn -B verify sonar:sonar
           -Dsonar.projectKey=stedaniel_simple-api
           -Dsonar.organization=stedaniel
