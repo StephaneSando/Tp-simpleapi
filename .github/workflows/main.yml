@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  # Job 1 : Tests et analyse
+  # Job 1 : Tests Maven
   test-backend:
     runs-on: ubuntu-24.04
     steps:
@@ -22,6 +22,21 @@ jobs:
           distribution: 'temurin'
 
       - name: Build and Test with Maven
+        run: mvn -B verify --file ./pom.xml
+
+  # Job 2 : Analyse SonarCloud 
+  analyse-sonar:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: SonarCloud Analysis
         run: mvn -B verify sonar:sonar 
           -Dsonar.projectKey=stedaniel_simple-api 
           -Dsonar.organization=stedaniel 
@@ -29,7 +44,7 @@ jobs:
           -Dsonar.login=${{ secrets.SONAR_TOKEN }} 
           --file ./pom.xml
 
-  # Job 2 : Build et push backend (après tests)
+  # Job 3 : Build et push backend
   build-and-push-backend:
     needs: test-backend
     runs-on: ubuntu-24.04
@@ -47,9 +62,8 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mybackend:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
-  # Job 3 : Build et push database (après tests)
+  # Job 4 Build et push database 
   build-and-push-database:
-    needs: test-backend
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
@@ -65,9 +79,8 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mydatabase:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
-  # Job 4 : Build et push httpd (après backend)
+  # Job 5 Build et push httpd 
   build-and-push-httpd:
-    needs: build-and-push-backend
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
@@ -82,4 +95,3 @@ jobs:
           context: ./httpd
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myhttpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
-      
