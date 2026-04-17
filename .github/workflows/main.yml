@@ -26,6 +26,7 @@ jobs:
 
   # Job 2 : Analyse SonarCloud 
   analyse-sonar:
+    needs: test-backend
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +47,7 @@ jobs:
 
   # Job 3 : Build et push backend
   build-and-push-backend:
-    needs: test-backend
+    needs: analyse-sonar
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
