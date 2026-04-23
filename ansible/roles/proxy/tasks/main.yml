@@ -1,0 +1,13 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/proxy
+- name: Run httpd container
+  docker_container:
+    name: httpd
+    image: stepahnedaniel/myhttpd:latest
+    ports:
+      - "80:80"
+    networks:
+      - name: httpnetwork
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python

@@ -1,0 +1,11 @@
+- name: Create appnetwork
+  docker_network:
+    name: appnetwork
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python
+
+- name: Create httpnetwork
+  docker_network:
+    name: httpnetwork
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python
