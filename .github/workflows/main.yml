@@ -26,7 +26,7 @@ jobs:
       - name: Build and Test with Maven
         run: mvn -B verify --file ./pom.xml
 
-  # Job 2 : Analyse Sonar
+  # Job 2: Analyse Sonar
   analyse-sonar:
     needs: test-backend
     runs-on: ubuntu-24.04
@@ -47,7 +47,7 @@ jobs:
          -Dsonar.login=${{ secrets.SONAR_TOKEN }} 
          --file ./pom.xml
 
-  # Job 3  Build et push backend 
+  # Job 3 Build et push backend 
   build-and-push-backend:
     needs: analyse-sonar
     if: github.event_name == 'pull_request'
@@ -66,7 +66,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mybackend:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
-  # Job 4 : Build et push database 
+  # Job 4 Build et push database 
   build-and-push-database:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-24.04
@@ -84,7 +84,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mydatabase:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
-  # Job 5 : Build et push httpd 
+  # Job 5 Build et push httpd 
   build-and-push-httpd:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-24.04
@@ -101,3 +101,30 @@ jobs:
           context: ./httpd
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myhttpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+          
+  # Job 6: Deploy avec Ansible
+  deploy:
+    needs:
+      - build-and-push-backend
+      - build-and-push-database
+      - build-and-push-httpd
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ansible
+        run: |
+          sudo apt update
+          sudo apt install -y ansible
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
+          ssh-keyscan -H stephane.sando-feuwo.takima.school >> ~/.ssh/known_hosts
+
+      - name: Run Ansible playbook
+        run: ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml
