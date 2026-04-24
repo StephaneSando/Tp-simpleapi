@@ -3,6 +3,7 @@ services:
     build: .
     networks:
       - appnetwork
+      - httpnetwork
     depends_on:
       - database
     environment:
@@ -28,12 +29,13 @@ services:
     ports:
       - "80:80"
     networks:
-      - appnetwork
+      - httpnetwork
     depends_on:
       - backend
     
 
 networks:
+  httpnetwork:
   appnetwork:
 
 volumes:
