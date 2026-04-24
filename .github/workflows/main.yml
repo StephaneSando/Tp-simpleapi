@@ -101,13 +101,32 @@ jobs:
           context: ./httpd
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myhttpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
-          
+
+    # Job 6: Build et push front
+  build-and-push-front:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: Build image and push front
+        uses: docker/build-push-action@v6
+        with:
+          context: ./devops-front
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/myfront:latest
+          push: true
+
   # Job 6: deploy Ansible
   deploy:
     needs:
       - build-and-push-backend
       - build-and-push-database
       - build-and-push-httpd
+      - build-and-push-front
     if: github.event_name == 'pull_request'
     environment: deploy_env
     runs-on: ubuntu-24.04
