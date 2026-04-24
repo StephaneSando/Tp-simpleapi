@@ -7,7 +7,7 @@ on:
       - '!main'     
   pull_request:
     branches:
-      - main        
+      - main       
 
 jobs:
 
@@ -102,13 +102,14 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myhttpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
           
-  # Job 6: Deploy avec Ansible
+  # Job 6: deploy Ansible
   deploy:
     needs:
       - build-and-push-backend
       - build-and-push-database
       - build-and-push-httpd
     if: github.event_name == 'pull_request'
+    environment: deploy_env
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
