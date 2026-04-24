@@ -102,7 +102,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/myhttpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
           
-  # Job 6: Deploy avec Ansible
+  # Job 6: deploy Ansible
   deploy:
     needs:
       - build-and-push-backend
